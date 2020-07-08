@@ -1,7 +1,5 @@
 import React from 'react';
 import './App.css';
-
-//com
 import Navbar from './components/Navbar'
 import Home from './components/Home'
 
@@ -21,12 +19,13 @@ class App extends React.Component{
       return response.json();
     })
     .then(data => {
+      console.log(data)
       this.setState({
         shopitem: data,
         initialData: data,
       })
     })
-  console.log('didmount')
+  // console.log('didmount')
     
  }
 
@@ -34,7 +33,15 @@ class App extends React.Component{
     return(
       <div className="App">
         <Navbar />
-      <Home />
+        {
+        this.state.shopitem.map((item) => (
+          <Home
+            key={item.id}
+            title={item.title}
+            body={item.body}
+          />
+        ))
+      }
       </div>
     )
     
