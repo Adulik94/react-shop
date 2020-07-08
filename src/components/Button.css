@@ -17,3 +17,8 @@ button {
   background-color: indigo;
   color: white
 }
+
+.remove {
+  background-color: grey;
+  color: rgb(255, 255, 255);
+}

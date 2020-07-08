@@ -1,6 +1,7 @@
 import React from 'react';
 
-function Navbar () {
+function Navbar (props) {
+  const { cartTotal, onShowCart } = props;
   return (
   
       <header>
@@ -10,9 +11,13 @@ function Navbar () {
             <ul>
               <li> <a href="#">Home</a></li>
               <li> <a href="#">About</a></li>
-              <li className="cart"><a href="#"> 
-               <ion-icon name="cart-outline">
-                </ion-icon>Cart<span>0</span></a></li>
+              <li className="cart" onClick={onShowCart}>
+                <a href="#"> 
+                <ion-icon name="cart-outline" />
+                Cart
+                <span> {cartTotal || ''}</span>
+               </a>
+              </li>
             </ul>
           
           </nav>
