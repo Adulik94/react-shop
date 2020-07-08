@@ -13,8 +13,8 @@ class App extends React.Component{
     }
   }
 
-  onShowCart = () => {
-    this.setState({ isCartPopupVisible: true })
+  onShowCart = (show = true) => {
+    this.setState({ isCartPopupVisible: show })
   }
 
   removeFromCart = (item) => {
@@ -60,7 +60,7 @@ class App extends React.Component{
             addToCart={() => this.onAddToCart(item)}
           />
         ))}
-        {isCartPopupVisible && <CartPopUp cart={cart} removeFromCart={this.removeFromCart}/>}
+        {isCartPopupVisible && <CartPopUp cart={cart} removeFromCart={this.removeFromCart} onClose={() => this.onShowCart(false)}/>}
       </div>
     )
     

@@ -5,6 +5,7 @@ import Button from './Button';
 const CartPopUp = (props) => {
     return(
     <div className='cartPopUp'>
+       <Button onClick={props.onClose} value='X'/>
       {props.cart.map(item => {
         return (
           <div className='cartItem'>

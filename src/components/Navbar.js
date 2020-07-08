@@ -9,8 +9,8 @@ function Navbar (props) {
           <nav>
             <h2>Shop</h2>
             <ul>
-              <li> <a href="#">Home</a></li>
-              <li> <a href="#">About</a></li>
+              <li>Home</li>
+              <li>Saved</li>
               <li className="cart" onClick={onShowCart}>
                 <a href="#"> 
                 <ion-icon name="cart-outline" />
