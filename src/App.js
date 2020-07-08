@@ -1,70 +1,65 @@
-import React from 'react';
+import React, {Component, useState, useEffect} from 'react';
 import './App.css';
 import Navbar from './components/Navbar'
 import Home from './components/Home'
 import CartPopUp from './components/CartPopUp'
 
-class App extends React.Component{
-  constructor(props) {
-    super(props);
-    this.state = {
-      cart: [],
-      shopitem: [],
+const App = () => {
+
+  const [cart, setCart] = useState([])
+  const [shopItem, setShopItem] = useState([])
+  const [isCartPopupVisible, setIsCartPopupVisible] = useState(false)
+
+  
+  const onShowCart = (show = true) => {
+    if (cart.length>0) {
+      setIsCartPopupVisible(show)
     }
   }
 
-  onShowCart = (show = true) => {
-    this.setState({ isCartPopupVisible: show })
+  const removeFromCart = (item) => {
+    const cartik = cart.filter(itm => itm.id!==item.id)
+    const isPopupVisible = cartik.length>0;
+    setCart(cartik);
+    setIsCartPopupVisible(isPopupVisible)
   }
 
-  removeFromCart = (item) => {
-    const cart = this.state.cart.filter(itm => itm.id!==item.id)
-    const isCartPopupVisible = cart.length>0;
-    this.setState({cart, isCartPopupVisible})
-  }
-
-  onAddToCart = (item) => {
-    if(!this.state.cart.find(itm => item.id===itm.id)){
-      const cart = [item, ...this.state.cart];
-      this.setState({cart})
-      console.log(cart)
+  const onAddToCart = (item) => {
+    if(!cart.find(itm => item.id===itm.id)){
+      const newCart = [item, ...cart];
+      setCart(newCart)
     }
   }
 
 
-  componentDidMount() {
+  useEffect(() => {
     fetch("https://jsonplaceholder.typicode.com/posts")
     .then(response => {
       return response.json();
     })
     .then(data => {
-      console.log(data)
-      this.setState({
-         shopitem: data,
-      })
+      setShopItem(data)
     })
-  // console.log('didmount')
-    
- }
+  }, [])
 
-  render() {
-    const { isCartPopupVisible, cart } = this.state;
-    return(
-      <div className="App">
-        <Navbar cartTotal={this.state.cart.length} onShowCart={this.onShowCart}/>
-        {this.state.shopitem.map((item) => (
-          <Home
-            key={item.id}
-            title={item.title}
-            body={item.body}
-            addToCart={() => this.onAddToCart(item)}
-          />
-        ))}
-        {isCartPopupVisible && <CartPopUp cart={cart} removeFromCart={this.removeFromCart} onClose={() => this.onShowCart(false)}/>}
-      </div>
-    )
-    
-}
+  // useEffect(() => {
+  //   alert('the cart has changed')
+  // }, [cart, props])
+
+  return(
+    <div className="App">
+      <Navbar cartTotal={cart.length} onShowCart={onShowCart}/>
+      {shopItem.map((item) => (
+        <Home
+          key={item.id}
+          title={item.title}
+          body={item.body}
+          addToCart={() => onAddToCart(item)}
+        />
+      ))}
+      {isCartPopupVisible && <CartPopUp cart={cart} removeFromCart={removeFromCart} onClose={() => onShowCart(false)}/>}
+    </div>
+  )
 
 } 
 
