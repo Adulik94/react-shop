@@ -1,0 +1,26 @@
+.title, .info {
+  margin: 20px;
+  font-size: 16px;
+}
+
+.home {
+  display: inline-flex;
+}
+
+.item {
+  display: flex;
+  width: 450px;
+  height: 300px;
+  border: 1px grey solid;
+  flex-direction: column;
+  margin: 10px;
+  border-radius: 5px;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  align-content: center;
+  height: 200px;
+}
