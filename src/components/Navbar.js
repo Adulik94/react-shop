@@ -1,6 +1,8 @@
 import React from 'react';
 
-function Navbar () {
+function Navbar (props) {
+  const { cartTotal, onShowCart } = props;
+  const {save,onSave}=props;
   return (
   
       <header>
@@ -8,11 +10,18 @@ function Navbar () {
           <nav>
             <h2>Shop</h2>
             <ul>
-              <li> <a href="#">Home</a></li>
-              <li> <a href="#">About</a></li>
-              <li className="cart"><a href="#"> 
-               <ion-icon name="cart-outline">
-                </ion-icon>Cart<span>0</span></a></li>
+              <li>Home</li>
+              <a href="#">
+              <li className="save" onClick={onSave}>Saved</li>
+                 </a> 
+                <span>{save || ''}</span>
+              <li className="cart" onClick={onShowCart}>
+                <a href="#"> 
+                <ion-icon name="cart-outline" />
+                Cart
+                <span> {cartTotal || ''}</span>
+               </a>
+              </li>
             </ul>
           
           </nav>
