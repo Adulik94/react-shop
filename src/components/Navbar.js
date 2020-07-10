@@ -10,10 +10,10 @@ function Navbar (props) {
           <nav>
             <h2>Shop</h2>
             <ul>
-              <a href="#">
-              <li className="home"><ion-icon name="home-outline"></ion-icon>Home
-              </li>
+              <li className="home">
+              <a href="#"><ion-icon name="home-outline"></ion-icon>Home
               </a>
+              </li>
               
               
               <li className="saved" onClick={onSave}>
