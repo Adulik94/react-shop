@@ -46,6 +46,7 @@ nav li{
   padding-right: 10px;
   padding-left: 10px; ;
 }
+
 li a{
   padding:10px;
   background-color: #ffffff;
@@ -64,4 +65,27 @@ li a{
   cursor: pointer;
   text-decoration: none;
 }
+.saved ion-icon{
+  vertical-align: bottom;
+  font-size: 20px;
+  padding-right: 5px;
+}
+.saved a{
+  background-color: burlywood;
+  color: #ffffff;
+  cursor: pointer;
+  text-decoration: none;
+}
 
+.home ion-icon{
+  vertical-align: bottom;
+  font-size: 20px;
+  padding-right: 5px;
+}
+
+.home a{
+  background-color: burlywood;
+  color: #ffffff;
+  cursor: pointer;
+  text-decoration: none;
+}
