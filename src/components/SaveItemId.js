@@ -10,7 +10,7 @@ const SaveItemId = (props) => {
         return (
           <div className='saveItem'>
             {item.title}
-            <Button className='save' onClick={() => props.removeFromSave(item)} value='Save'/>
+            <Button className='save' onClick={() => props.removeFromSave(item)} value='Check Out'/>
           </div>
         )
       })}        

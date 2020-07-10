@@ -9,8 +9,8 @@ const Home = (props) => {
             <h1 className='title'>{props.title}</h1>
             <p className='info'>{props.body}</p>
             <div className='buttons' >
-                <Button value='Save' onClick={props.onSave} className='save'/>
-                <Button value='Add to cart' onClick={props.addToCart } className='addToCart'/>
+                <Button value='Save' onClick={props.onSaveItem} className='save'/>
+                <Button value='Add to cart' onClick={props.addToCart} className='addToCart'/>
             </div>
 
         </div>

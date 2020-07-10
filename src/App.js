@@ -34,28 +34,28 @@ const App = () => {
   }
 //---------------end card-----------//
 
-  //--------Saved item--------//
+//--------Saved item--------//
 
-const onSave =(show = true)=> {
-  if(cart.length>0){
-    setIsSaveVisible(show)
+  const onSave =(show = true)=> {
+    if(cart.length>0){
+      setIsSaveVisible(show)
+    }
   }
-}
 
-const onSaveItem =(item)=>{
-  if(!cart.find(itm=> item.id===itm.id)){
-    const saved =[item,...cart];
-    setCart(saved)
+  const onSaveItem =(item)=>{
+    if(!cart.find(itm=> item.id===itm.id)){
+      const saved =[item,...cart];
+      setCart(saved)
+      setIsSaveVisible(isSaveVisible)
+
+    }
+  }
+  const removeFromSave =(item)=>{
+    const savik = cart.filter(itm=>itm.id!==itm.id);
+    const isSaveVisible = savik.length>0;
+    setCart(savik);
     setIsSaveVisible(isSaveVisible)
-
   }
-}
-const removeFromSave =(item)=>{
-  const savik = cart.filter(itm=> itm.id!==itm.id)
-  const isSaveVisible = savik.length>0;
-  setCart(savik);
-  setIsSaveVisible(isSaveVisible)
-}
 
 //---------------end save-----------//
 
@@ -82,7 +82,7 @@ const removeFromSave =(item)=>{
         />
       ))}
       {isCartPopupVisible && <CartPopUp cart={cart} removeFromCart={removeFromCart} onClose={() => onShowCart(false)} />}
-      {isSaveVisible && <SaveItemId cart={cart} removeFromSave={removeFromSave} onClose ={()=>onSaveItem(false) } />};
+      {isSaveVisible && <SaveItemId cart={cart} removeFromSave={removeFromSave} onClose ={()=>onSave(false) } />};
     </div>
   )
 
